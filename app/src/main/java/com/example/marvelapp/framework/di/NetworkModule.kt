@@ -48,10 +48,10 @@ object NetworkModule {
         authorizationInterceptor: AuthorizationInterceptor
     ) : OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(authorizationInterceptor)
             .addInterceptor(loggingInterceptor)
             .readTimeout(15, TimeUnit.SECONDS)
             .writeTimeout(15, TimeUnit.SECONDS)
-            .addInterceptor(authorizationInterceptor)
             .build()
     }
 
